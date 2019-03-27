@@ -13,6 +13,11 @@ class App extends Component {
     score: 0
   }
 
+  reset = () => {
+    this.setState({score: 0})
+    this.setState({clicked: []})
+  }
+
   shuffle = () => {
     let shuffledArr = [];
     let temp = this.state.friends;
@@ -30,8 +35,7 @@ class App extends Component {
     var currentScore = this.state.score;
 
     if(added.includes(toonClicked)){
-      this.setState({score: 0})
-      this.setState({clicked: []})
+      this.reset();
     } else{
     added.push(toonClicked);
     this.setState({clicked: added})
@@ -47,7 +51,7 @@ class App extends Component {
   render() {
     return (
     <div>
-      <HeadNav score={this.state.score}/>
+      <HeadNav score={this.state.score} reset={this.reset}/>
       <Wrapper>
         {this.state.friends.map(el => {
           return (

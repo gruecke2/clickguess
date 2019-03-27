@@ -5,6 +5,17 @@
     text-align: center;
 }
 
+.resetBtn{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 .navbar {
     background: #ffa012;
     min-height: 70px;
@@ -22,6 +33,10 @@
 
 ul.nav {
     margin-top: 0;
+}
+
+#main-head{
+    margin-top: 15px;
 }
 
 .header {

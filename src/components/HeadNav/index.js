@@ -8,14 +8,14 @@ class HeadNav extends Component {
         <nav className="navbar">
           <ul className="nav">
             <li className="nav-item">
-              <button className="nav-link active" href="#">
+              <button className="nav-link resetBtn" onClick={this.props.reset}>
                 Reset
               </button>
             </li>
             <li className="nav-item">
-              <h1>Click Game!</h1>
+              <h1 id="main-head">Click Game!</h1>
             </li>
-            <li className="nav-item">Score: <span>{this.props.score}</span></li>
+            <li className="nav-item">Score: <span>{this.props.score}{(this.props.score===12?" You win!":"")}</span></li>
           </ul>
         </nav>
         <header className="header">
