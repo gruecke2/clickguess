@@ -1,26 +1,66 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import HeadNav from './components/HeadNav'
 import './App.css';
+import friends from './friends.json';
+import Wrapper from './components/Wrapper';
+import FriendCard from './components/FriendCard';
 
 class App extends Component {
+  state = {
+    friends: friends,
+    clicked: [],
+    score: 0
+  }
+
+  shuffle = () => {
+    let shuffledArr = [];
+    let temp = this.state.friends;
+    while(temp.length !== 0){
+      let randomI = Math.floor(Math.random()*temp.length);
+      shuffledArr.push(temp[randomI]);
+      temp.splice(randomI, 1);
+    }
+    this.setState({friends: shuffledArr})
+  }
+
+  handleClick = event => {
+    var added = this.state.clicked;
+    var toonClicked = event.target.id;
+    var currentScore = this.state.score;
+
+    if(added.includes(toonClicked)){
+      this.setState({score: 0})
+      this.setState({clicked: []})
+    } else{
+    added.push(toonClicked);
+    this.setState({clicked: added})
+    console.log(this.state.clicked);
+    this.setState({score: ++currentScore});
+    }
+
+    this.shuffle();
+    
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+    <div>
+      <HeadNav score={this.state.score}/>
+      <Wrapper>
+        {this.state.friends.map(el => {
+          return (
+            <FriendCard
+              id={el.id}
+              name={el.name}
+              image={el.image}
+              click={this.handleClick}
+            />
+          )
+        })}  
+      </Wrapper>
+    </div>
     );
   }
 }
