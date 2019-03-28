@@ -1,24 +1,21 @@
 import React from "react";
 import "./style.css";
 
-class FriendCard extends React.Component{
+function FriendCard(props){
   
-  render(){
     return (
-      <div className="card" >
+      <div className={`card  ${props.wrong?"wiggle":""}`} >
         <div className="img-container">
           <img 
-            alt={this.props.name} 
-            src={this.props.image} 
+            alt={props.name} 
+            src={props.image} 
             className="toonImage"
-            id={this.props.id}
-            onClick={this.props.click}
+            id={props.id}
+            onClick={props.click}
             />
         </div>
       </div>
     );
-  }
-  
 }
 
 export default FriendCard;

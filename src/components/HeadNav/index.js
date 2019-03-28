@@ -1,21 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import "./style.css";
 
-class HeadNav extends Component {
-  render() {
+function HeadNav(props) {
     return (
       <div>
         <nav className="navbar">
           <ul className="nav">
             <li className="nav-item">
-              <button className="nav-link resetBtn" onClick={this.props.reset}>
+              <button className="nav-link resetBtn" onClick={props.reset}>
                 Reset
               </button>
             </li>
             <li className="nav-item">
               <h1 id="main-head">Click Game!</h1>
             </li>
-            <li className="nav-item">Score: <span>{this.props.score}{(this.props.score===12?" You win!":"")}</span></li>
+            <li className="nav-item">Score: <span>{props.score}{(props.score===12?" You win!":"")}</span></li>
           </ul>
         </nav>
         <header className="header">
@@ -29,7 +28,6 @@ class HeadNav extends Component {
         </header>
       </div>
     );
-  }
 }
 
 export default HeadNav;

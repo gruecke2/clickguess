@@ -10,12 +10,17 @@ class App extends Component {
   state = {
     friends: friends,
     clicked: [],
-    score: 0
+    score: 0,
+    wrongGuess: false
   }
 
   reset = () => {
     this.setState({score: 0})
     this.setState({clicked: []})
+    this.setState({wrongGuess: true})
+    setTimeout(() => {
+      this.setState({wrongGuess: false})
+    }, 500);
   }
 
   shuffle = () => {
@@ -40,6 +45,7 @@ class App extends Component {
     added.push(toonClicked);
     this.setState({clicked: added})
     console.log(this.state.clicked);
+    console.log(this.state.wrongGuess);
     this.setState({score: ++currentScore});
     }
 
@@ -56,6 +62,7 @@ class App extends Component {
         {this.state.friends.map(el => {
           return (
             <FriendCard
+              wrong={this.state.wrongGuess}
               id={el.id}
               name={el.name}
               image={el.image}
