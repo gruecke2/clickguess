@@ -20,7 +20,7 @@ class App extends Component {
     this.setState({wrongGuess: true})
     setTimeout(() => {
       this.setState({wrongGuess: false})
-    }, 500);
+    }, 400);
   }
 
   shuffle = () => {
