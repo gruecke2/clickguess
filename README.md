@@ -1,6 +1,6 @@
 # Cartoon Click Game
 
-![](screenshots/spotify-cap1.PNG)
+![](src/assets/img/clicky-capture.PNG)
 
 ## About
 This app was built in React and uses some ES6 features for the logic. A simple game, yet demonstrates how easily a React web application can be coded up!
